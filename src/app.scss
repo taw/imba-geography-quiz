@@ -8,28 +8,36 @@
     font-size: 64px;
   }
 
-  .Map {
-    width: 100vw;
-    position: relative;
-  }
-
   .map_container {
     width: 100vw;
+    height: 50vw;
     position: relative;
   }
 
-  .Marker {
+  .Map {
+    width: 100vw;
+    height: 50vw;
     position: absolute;
-    height: 10px;
-    width: 10px;
-    border-radius: 50%;
+    left: 0;
+  }
+
+  ._Markers {
+    position: absolute;
+    left: 0;
+    width: 100vw;
+    height: 50vw;
     pointer-events: none;
 
-    &.clicked {
-      background-color: red;
+    .clicked {
+      fill: red;
     }
-    &.actual {
-      background-color: cyan;
+    .actual  {
+      fill: cyan;
+    }
+    line {
+      stroke: red;
+      stroke-width: 4px;
+      stroke-dasharray: "4 1"
     }
   }
 }

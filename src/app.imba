@@ -37,14 +37,27 @@ tag Map < img
   def render
     <self.map src="earth.jpg">
 
-tag Marker
-  prop lat
-  prop lon
+tag Markers < svg:svg
+  prop city
+  prop clicked
+
+  def y(lat)
+    "{ (- lat + 90) / 180 * 50 }vw"
+
+  def x(lon)
+    "{ (lon + 180) / 360 * 100 }vw"
 
   def render
-    let left = "{ (lon + 180) / 360 * 100 }vw"
-    let top = "{ (- lat + 90) / 180 * 50 }vw"
-    <self css:top=top css:left=left>
+    let y1 = y(city:lat)
+    let x1 = x(city:lon)
+    let y2 = y(clicked[0])
+    let x2 = x(clicked[1])
+    console.log("A", city, x1, y1)
+    console.log("C", clicked, x2, y2)
+    <self>
+      <svg:line x1=x1 y1=y1 x2=x2 y2=y2>
+      <svg:circle.actual cx=x1 cy=y1 r="{10}px">
+      <svg:circle.clicked cx=x2 cy=y2 r="{10}px">
 
 tag App
   def onmapclick(event, latlon)
@@ -62,7 +75,10 @@ tag App
       @city = random_city
 
   def random_city
-    cities[randint(0, cities:length - 1)]
+    while true
+      let city = cities[randint(0, cities:length - 1)]
+      if city:pop >= 1000000
+        return city
 
   def setup
     @state = "guess"
@@ -75,8 +91,7 @@ tag App
       <div.map_container>
         <Map>
         if @state === "result"
-          <Marker.actual lat=@city:lat lon=@city:lon>
-          <Marker.clicked lat=@guess_latlon[0] lon=@guess_latlon[1]>
+          <Markers city=@city clicked=@guess_latlon>
       <div.instructions>
         "Where is {@city:name}?"
       if @state === "result"
@@ -86,7 +101,7 @@ tag App
           if @distance < 500
             "Amazing!"
           else if @distance < 2000
-            "Pretty goood."
+            "Pretty good."
           else if @distance < 5000
             "Pretty poor. {@city:pop} people living there are all disappointed in you."
           else
