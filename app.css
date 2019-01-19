@@ -406,19 +406,26 @@ template {
   text-align: center; }
   .App header {
     font-size: 64px; }
-  .App .Map {
-    width: 100vw;
-    position: relative; }
   .App .map_container {
     width: 100vw;
+    height: 50vw;
     position: relative; }
-  .App .Marker {
+  .App .Map {
+    width: 100vw;
+    height: 50vw;
     position: absolute;
-    height: 10px;
-    width: 10px;
-    border-radius: 50%;
+    left: 0; }
+  .App ._Markers {
+    position: absolute;
+    left: 0;
+    width: 100vw;
+    height: 50vw;
     pointer-events: none; }
-    .App .Marker.clicked {
-      background-color: red; }
-    .App .Marker.actual {
-      background-color: cyan; }
+    .App ._Markers .clicked {
+      fill: red; }
+    .App ._Markers .actual {
+      fill: cyan; }
+    .App ._Markers line {
+      stroke: red;
+      stroke-width: 4px;
+      stroke-dasharray: "4 1"; }
