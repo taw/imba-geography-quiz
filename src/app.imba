@@ -52,8 +52,6 @@ tag Markers < svg:svg
     let x1 = x(city:lon)
     let y2 = y(clicked[0])
     let x2 = x(clicked[1])
-    console.log("A", city, x1, y1)
-    console.log("C", clicked, x2, y2)
     <self>
       <svg:line x1=x1 y1=y1 x2=x2 y2=y2>
       <svg:circle.actual cx=x1 cy=y1 r="{10}px">
@@ -75,10 +73,7 @@ tag App
       @city = random_city
 
   def random_city
-    while true
-      let city = cities[randint(0, cities:length - 1)]
-      if city:pop >= 1000000
-        return city
+    cities[randint(0, cities:length - 1)]
 
   def setup
     @state = "guess"
