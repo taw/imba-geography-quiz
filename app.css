@@ -428,4 +428,4 @@ template {
     .App ._Markers line {
       stroke: red;
       stroke-width: 4px;
-      stroke-dasharray: "4 1"; }
+      stroke-dasharray: 4 1; }
