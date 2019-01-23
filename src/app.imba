@@ -54,8 +54,8 @@ tag Markers < svg:svg
     let x2 = x(clicked[1])
     <self>
       <svg:line x1=x1 y1=y1 x2=x2 y2=y2>
-      <svg:circle.actual cx=x1 cy=y1 r="{10}px">
-      <svg:circle.clicked cx=x2 cy=y2 r="{10}px">
+      <svg:circle.actual cx=x1 cy=y1>
+      <svg:circle.clicked cx=x2 cy=y2>
 
 tag App
   def onmapclick(event, latlon)
