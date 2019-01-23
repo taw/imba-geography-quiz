@@ -81,8 +81,6 @@ tag App
 
   def render
     <self>
-      <header>
-        "Geography Quiz"
       <div.map_container>
         <Map>
         if @state === "result"
