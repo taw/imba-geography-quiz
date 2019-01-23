@@ -86,10 +86,15 @@ tag App
         if @state === "result"
           <Markers city=@city clicked=@guess_latlon>
       <div.instructions>
-        "Where is {@city:name}?"
+        "Where is "
+        <b>
+          @city:name
+        "?"
       if @state === "result"
         <div.result>
-          "You clicked {@distance} km away from real location."
+          <b>
+            @distance
+          "km off"
         <div.result>
           if @distance < 500
             "Amazing!"
